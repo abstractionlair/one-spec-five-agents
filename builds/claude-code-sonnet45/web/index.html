@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Model Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Multi-Model Chat</h1>
+      <div class="project-info">
+        <select id="projectSelect">
+          <option value="">Select Project...</option>
+        </select>
+        <button id="newProjectBtn">New Project</button>
+      </div>
+    </header>
+
+    <main>
+      <aside class="sidebar">
+        <h2>Conversations</h2>
+        <button id="newConversationBtn">New Conversation</button>
+        <div id="conversationList" class="conversation-list"></div>
+      </aside>
+
+      <section class="chat-area">
+        <div id="messages" class="messages"></div>
+
+        <div class="input-area">
+          <div class="model-selection">
+            <label>
+              <input type="checkbox" value="openai:gpt-4o" class="model-checkbox"> GPT-4o
+            </label>
+            <label>
+              <input type="checkbox" value="anthropic:claude-sonnet-4-5-20250929" class="model-checkbox"> Claude Sonnet 4.5
+            </label>
+            <label>
+              <input type="checkbox" value="google:gemini-2.0-flash-exp" class="model-checkbox"> Gemini 2.0 Flash
+            </label>
+          </div>
+
+          <div class="message-input-container">
+            <textarea id="messageInput" placeholder="Type your message..." rows="3"></textarea>
+            <button id="sendBtn">Send</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

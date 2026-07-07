@@ -1,0 +1,18 @@
+{
+  "name": "mm-web",
+  "version": "0.1.0",
+  "description": "Frontend UI for Multi-Model Chat",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "marked": "^12.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

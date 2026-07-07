@@ -1,0 +1,17 @@
+{
+  "name": "multi-model-chat-antigravity",
+  "version": "1.0.0",
+  "description": "Project-aware AI orchestration system: query multiple models (GPT-4, Claude, Gemini) in parallel with shared context, persistent file storage, and sandboxed code execution.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "better-sqlite3": "^12.4.6",
+    "multer": "^2.0.2"
+  }
+}

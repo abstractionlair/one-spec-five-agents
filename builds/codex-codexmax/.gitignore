@@ -1,0 +1,5 @@
+node_modules
+storage/data.db
+projects/
+.env
+npm-debug.log

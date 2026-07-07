@@ -1,0 +1,47 @@
+
+> multi-model-chat@1.0.0 start
+> node server/server.js
+
+[dotenv@17.2.3] injecting env (13) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+Current schema version: 1
+All migrations complete
+✓ Database initialized
+
+🚀 Multi-Model Chat Server
+   Port: 3000
+   API:  http://localhost:3000/api
+   Web:  http://localhost:3000
+
+Get conversation error: Error: Conversation not found
+    at getConversationWithMessages (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/server/conversations/reader.js:57:28)
+    at /Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/server/conversations/routes.js:44:34
+    at Layer.handle [as handle_request] (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/layer.js:95:5)
+    at /Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/index.js:284:15
+    at param (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/index.js:365:14)
+    at param (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/index.js:421:3)
+Create conversation error: SqliteError: FOREIGN KEY constraint failed
+    at createConversation (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/server/conversations/writer.js:18:6)
+    at /Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/server/conversations/routes.js:25:26
+    at Layer.handle [as handle_request] (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/route.js:149:13)
+    at jsonParser (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/body-parser/lib/types/json.js:104:7)
+    at Layer.handle [as handle_request] (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/layer.js:95:5)
+    at /Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/express/lib/router/index.js:284:15 {
+  code: 'SQLITE_CONSTRAINT_FOREIGNKEY'
+}
+Error calling google/gemini-2.0-flash-exp: GoogleGenerativeAIError: [404 Not Found] models/gemini-2.0-flash-exp is not found for API version v1, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at makeRequest (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/@google/generative-ai/dist/index.js:216:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async generateContent (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/@google/generative-ai/dist/index.js:525:22)
+    at async ChatSession.sendMessage (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/node_modules/@google/generative-ai/dist/index.js:669:9)
+    at async callGoogle (/Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/server/adapters/google.js:41:20)
+    at async /Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/server/routes/turn.js:123:24
+    at async Promise.all (index 0)
+    at async /Volumes/Share 1/Projects/multi-model-chat-claude-code-sonnet45/server/routes/turn.js:161:23

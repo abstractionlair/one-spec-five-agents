@@ -1,0 +1,311 @@
+openapi: 3.0.3
+info:
+  title: mm-server API
+  description: Backend API for Multi-Model Chat
+  version: 0.1.0
+
+servers:
+  - url: http://localhost:3000
+    description: Local development
+
+paths:
+  /api/turn:
+    post:
+      summary: Execute conversation turn
+      description: Send a message to one or more models and get responses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TurnRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TurnResponse'
+
+  /api/projects:
+    get:
+      summary: List projects
+      responses:
+        '200':
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  projects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Project'
+    post:
+      summary: Create project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectRequest'
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+
+  /api/projects/{project_id}:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get project
+      responses:
+        '200':
+          description: Project details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+    put:
+      summary: Update project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectRequest'
+      responses:
+        '200':
+          description: Project updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+    delete:
+      summary: Delete project
+      responses:
+        '204':
+          description: Project deleted
+
+  /api/projects/{project_id}/files:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: List files
+      responses:
+        '200':
+          description: List of files
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  files:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProjectFile'
+    post:
+      summary: Upload file
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                path:
+                  type: string
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: File uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectFile'
+
+  /api/projects/{project_id}/conversations:
+    parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: List conversations
+      responses:
+        '200':
+          description: List of conversations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conversations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Conversation'
+    post:
+      summary: Create conversation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConversationRequest'
+      responses:
+        '201':
+          description: Conversation created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+
+components:
+  schemas:
+    TurnRequest:
+      type: object
+      required:
+        - project_id
+        - user_message
+        - target_models
+      properties:
+        project_id:
+          type: string
+        conversation_id:
+          type: string
+          description: Optional, creates new if omitted
+        user_message:
+          type: string
+        target_models:
+          type: array
+          items:
+            type: object
+            required:
+              - provider
+              - modelId
+            properties:
+              provider:
+                type: string
+                enum: [openai, anthropic, google, xai]
+              modelId:
+                type: string
+
+    TurnResponse:
+      type: object
+      properties:
+        conversation_id:
+          type: string
+        round_number:
+          type: integer
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+              modelId:
+                type: string
+              response:
+                type: string
+              usage:
+                type: object
+                properties:
+                  input_tokens:
+                    type: integer
+                  output_tokens:
+                    type: integer
+              error:
+                type: string
+
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        path:
+          type: string
+        settings:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    CreateProjectRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+
+    UpdateProjectRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        settings:
+          type: object
+
+    ProjectFile:
+      type: object
+      properties:
+        id:
+          type: string
+        path:
+          type: string
+        content_hash:
+          type: string
+        mime_type:
+          type: string
+        size_bytes:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+        project_id:
+          type: string
+        title:
+          type: string
+        round_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    CreateConversationRequest:
+      type: object
+      properties:
+        title:
+          type: string

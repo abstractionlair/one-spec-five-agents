@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Model Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🤖 Multi-Model Chat</h1>
+      <div class="controls">
+        <select id="projectSelect">
+          <option value="">Select project...</option>
+        </select>
+        <button id="newProjectBtn">New Project</button>
+      </div>
+    </header>
+
+    <div class="main">
+      <aside class="sidebar">
+        <h3>Conversations</h3>
+        <div id="conversationList"></div>
+        <button id="newConvBtn">New Conversation</button>
+
+        <h3>Files</h3>
+        <div id="fileList"></div>
+        <button id="uploadFileBtn">Upload File</button>
+
+        <h3>Search</h3>
+        <input type="text" id="searchInput" placeholder="Search project...">
+        <div id="searchResults"></div>
+      </aside>
+
+      <main class="chat">
+        <div id="messages"></div>
+
+        <div class="input-area">
+          <div class="model-select">
+            <label>
+              <input type="checkbox" class="model-checkbox" value="openai|gpt-4o-mini" checked>
+              OpenAI (default GPT‑4‑class model)
+            </label>
+            <label>
+              <input type="checkbox" class="model-checkbox" value="anthropic|claude-sonnet-4-5">
+              Anthropic (default Claude‑class model)
+            </label>
+          </div>
+
+          <textarea id="messageInput" placeholder="Type your message..."></textarea>
+          <button id="sendBtn">Send</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <input type="file" id="fileInput" style="display: none;">
+
+  <script src="app.js"></script>
+</body>
+</html>
