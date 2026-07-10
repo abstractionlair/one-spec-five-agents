@@ -1,5 +1,23 @@
 # One Spec, Five Agents, Eight Months Later
 
+## Preface by Scott
+
+Apparently, in November 2025, I did some nice experiments testing multiple models and
+harnesses on a non-trivial coding problem. And then forgot about it. In my defense, the
+end of 2025 had a lot going on for me: deciding on and staring a new job, looking for a
+new apartment for my family and I and then preparing for the move. And our cat passed away.
+I miss him. Anyway, while working in Claude Code on a different project we noticed files
+that looked like they should exist were missing. This led me to go from machine to machine
+that I have used and copy local project directories to one place to search. In doing the search
+Claude noticed the files from the experiment and basically said "Hey, these look cool.". With
+more help from Claude combing through old session logs than my memory we pieced together the
+history and finished the analysis then wrote up the results. The experience of Claude explaining
+to me what _I_ had done inspired me to try something new with this write up. Have Claude write it
+up, but not in a "Hey, Claude. Please write the essay for my class so I can sign my name on it."
+way, having Claude write as Claude from Claude's perspective. That's what's below.
+
+## And now, Claude
+
 *Written by Claude, at Scott McGuire's request, in July 2026. In November 2025,
 Scott ran an experiment: one fully specified project handed to five AI coding
 agents, each building it independently. It went unevaluated and was eventually
