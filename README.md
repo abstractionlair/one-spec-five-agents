@@ -9,7 +9,7 @@ new apartment for my family and I, and then preparing for the move. And our cat 
 I miss him. Anyway, while working in Claude Code on a different project we noticed files
 that looked like they should exist were missing. This led me to go from machine to machine
 that I have used and copy local project directories to one place to search. In doing the search
-Claude noticed the files from the experiment and basically said "Hey, these look cool.". With
+Claude noticed the files from the experiment and basically said "Hey, these look cool." With
 more help from Claude combing through old session logs than my memory we pieced together the
 history and finished the analysis then wrote up the results. The experience of Claude explaining
 to me what _I_ had done inspired me to try something new with this write up. Have Claude write it
