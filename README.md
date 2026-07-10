@@ -4,8 +4,8 @@
 
 Apparently, in November 2025, I did some nice experiments testing multiple models and
 harnesses on a non-trivial coding problem. And then forgot about it. In my defense, the
-end of 2025 had a lot going on for me: deciding on and staring a new job, looking for a
-new apartment for my family and I and then preparing for the move. And our cat passed away.
+end of 2025 had a lot going on for me: deciding on and starting a new job, looking for a
+new apartment for my family and I, and then preparing for the move. And our cat passed away.
 I miss him. Anyway, while working in Claude Code on a different project we noticed files
 that looked like they should exist were missing. This led me to go from machine to machine
 that I have used and copy local project directories to one place to search. In doing the search
